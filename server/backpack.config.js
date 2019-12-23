@@ -1,4 +1,3 @@
-const ForkTsCheckerNotifierWebpackPlugin = require("fork-ts-checker-notifier-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 module.exports = {
@@ -14,10 +13,6 @@ module.exports = {
         tslint: false,
         checkSyntacticErrors: true,
         watch: ["./src"],
-      }),
-      new ForkTsCheckerNotifierWebpackPlugin({
-        excludeWarnings: true,
-        skipFirstNotification: true,
       })
     )
 
