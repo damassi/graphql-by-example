@@ -5,8 +5,11 @@
 
 import gql from "graphql-tag"
 import axios from "axios"
+import { User } from "../models/User"
 
-// Set config defaults when creating the instance
+/**
+ * Set config defaults when creating the instance
+ */
 const fetch = axios.create({
   baseURL: "https://reststop.randomhouse.com/resources/",
   auth: {
@@ -16,7 +19,9 @@ const fetch = axios.create({
   responseType: "json",
 })
 
-// Construct a schema, using GraphQL schema language
+/**
+ * Construct a schema, using GraphQL schema language
+ */
 export const typeDefs = gql`
   # The author of a work
   type Author {
@@ -35,15 +40,23 @@ export const typeDefs = gql`
     authorweb: String
   }
 
+  # Application user
+  type User {
+    username: String
+  }
+
   type Query {
     author(id: Int!): Author
     authors(firstName: String = "", lastName: String = ""): [Author]
     work(id: Int!): Work
     works(keyword: String!): [Work]
+    users: [User]
   }
 `
 
-// Provide resolver functions for your schema fields
+/**
+ * Provide resolver functions for your schema fields
+ */
 export const resolvers = {
   Query: {
     author: async (_parent, args, _context, _info) => {
@@ -83,6 +96,11 @@ export const resolvers = {
 
       return response.data.work
     },
+
+    users: async () => {
+      const users = await User.findAll()
+      return users
+    },
   },
 
   /**
@@ -96,5 +114,3 @@ export const resolvers = {
     },
   },
 }
-
-// curl -X GET -v -H "Accept: application/json" --basic -u "testuser:testpassword" https://reststop.randomhouse.com/resources/authors\?lastName\=Grisham

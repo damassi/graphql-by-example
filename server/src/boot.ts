@@ -1,10 +1,13 @@
 import express from "express"
 import { ApolloServer } from "apollo-server-express"
+import { bootstrapDatabase } from "./models/db"
 
 const { PORT } = process.env
 const app = express()
 
-export function bootServer(mode: "sdl" | "gql") {
+export async function bootServer(mode: "sdl" | "gql") {
+  await bootstrapDatabase()
+
   let server: ApolloServer
 
   /**
@@ -29,7 +32,7 @@ export function bootServer(mode: "sdl" | "gql") {
      *
      * While more verbose than SDL, this scales well due to types and resolvers
      * all being one unit while also integrating nicely with TypeScript. Many
-     * underlying ecosystem tools use this package as the bottom-most layer and
+     * underlying ecosystem tools use this pacage as the bottom-most layer and
      * build abstractions around it.
      *
      * See: https://github.com/graphql/graphql-js
