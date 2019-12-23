@@ -1,0 +1,16 @@
+{
+  "files.exclude": {
+    ".git/": true,
+    "build/": true
+  },
+  "search.exclude": {
+    "**/node_modules": true
+  },
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib"
+}
