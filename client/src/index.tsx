@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
   }
 
-  textarea:focus, input:focus {
+  button:focus, textarea:focus, input:focus {
     outline: none;
   }
 `

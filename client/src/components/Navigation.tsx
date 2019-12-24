@@ -14,8 +14,7 @@ export const Navigation = props => {
   return (
     <Flex py={2}>
       <NavItem to="/">Home</NavItem>
-      <NavItem to="/books">Books</NavItem>
-      <NavItem to="/works">Works</NavItem>
+      <NavItem to="/authors">Authors</NavItem>
       <NavItem to="/users">Users</NavItem>
     </Flex>
   )

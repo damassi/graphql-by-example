@@ -1,13 +1,15 @@
 import React from "react"
-import { Box, Text, Flex, Button } from "rebass"
+import { Box, Flex } from "rebass"
+import { ReactComponent as GraphQLLogo } from "./graphql.svg"
+import { Link } from "@reach/router"
 
 export const Header: React.FC = () => {
   return (
     <Box py={3}>
       <Flex justifyContent="space-between">
-        <Text fontSize={[5]} fontWeight="bold">
-          GraphQL Demo
-        </Text>
+        <Link to="/">
+          <GraphQLLogo style={{ height: 100 }} />
+        </Link>
       </Flex>
     </Box>
   )

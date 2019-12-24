@@ -1,13 +1,20 @@
 import React from "react"
-import { Box, Text } from "rebass"
+import { Box, Text, Flex } from "rebass"
+import { NextLink } from "../components/NextLink"
 
 export const Users = props => {
   return (
     <Box>
       <Text fontSize={3}>
-        Demo app showing how GraphQL can be used in a variety of ways, from
-        connecting to remote Rest API's to internal databases.
+        This shows how we can create a GraphQL schema around our own server, as
+        well as how we can change data via GraphQL mutations.
       </Text>
+
+      <Flex my={3}>
+        <NextLink to="/users">
+          <strong>Next: </strong> Links to further reading
+        </NextLink>
+      </Flex>
     </Box>
   )
 }
