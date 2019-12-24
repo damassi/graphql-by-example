@@ -1,11 +1,21 @@
-import { GraphQLSchema, GraphQLObjectType } from "graphql"
-import { user } from "./user"
+import gql from "graphql-tag"
+import merge from "lodash.merge"
 
-export const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: "Query",
-    fields: {
-      user,
-    },
-  }),
-})
+import * as author from "./Author"
+import * as user from "./User"
+import * as work from "./Work"
+
+// An initial `Query` type is required, which will be extend by subtypes. If
+// there's a type that doesn't logically fit inside of its own file, it can be
+// added here.
+const Query = gql`
+  type Query {
+    """
+    Noop to support extending Query type
+    """
+    _: String
+  }
+`
+
+export const typeDefs = [Query, author.typeDefs, user.typeDefs, work.typeDefs]
+export const resolvers = merge(author.resolvers, user.resolvers, work.resolvers)

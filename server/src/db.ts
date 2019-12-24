@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize"
-import { User, initUser } from "./User"
+import { User, initUser } from "./resources/User"
 
 /**
  * Export SQL orm to be used throughout app
@@ -9,7 +9,7 @@ export const sequelize = new Sequelize("sqlite::memory:")
 /**
  * Load bootstrap data
  */
-export async function bootstrapDatabase() {
+export async function bootstrap() {
   return new Promise((resolve, reject) => {
     initUser(sequelize)
 
