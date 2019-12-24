@@ -1,23 +1,29 @@
-import React from "react";
+import React from "react"
+import { Text, Box } from "rebass"
+import { Header } from "./components/Header"
+import { Navigation } from "./components/Navigation"
 
-const App: React.FC = () => {
+import { Router, Link } from "@reach/router"
+import { Home } from "./routes/Home"
+import { Books } from "./routes/Books"
+import { Works } from "./routes/Works"
+import { Users } from "./routes/Users"
+
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-};
+    <Box p={2} m={2} width="50%" margin="auto">
+      <Header />
 
-export default App;
+      <Navigation />
+
+      <Box py={3}>
+        <Router>
+          <Home path="/" />
+          <Books path="books" />
+          <Works path="works" />
+          <Users path="users" />
+        </Router>
+      </Box>
+    </Box>
+  )
+}
