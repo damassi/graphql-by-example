@@ -6,7 +6,7 @@ import express from "express"
  */
 export class User extends Model {}
 
-export function initUser(sequelize) {
+export function makeUser(sequelize) {
   User.init(
     {
       id: {
@@ -18,6 +18,8 @@ export function initUser(sequelize) {
     },
     { sequelize, modelName: "user" }
   )
+
+  return User
 }
 
 /**
