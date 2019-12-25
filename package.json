@@ -1,0 +1,14 @@
+{
+  "name": "graphql-presentation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:damassi/graphql-presentation.git",
+  "author": "Christopher Pappas <damassi.pappas@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently 'cd server && yarn dev' 'cd client && yarn start'"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2"
+  }
+}
