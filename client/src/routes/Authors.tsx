@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from "react"
+import React from "react"
 import { Box, Text, Flex } from "rebass"
 import JSON from "react-json-view"
 import { useLazyQuery } from "@apollo/react-hooks"
 import { gql } from "apollo-boost"
 
-import { Button } from "../components/Button"
-import { Input } from "../components/Input"
 import { NextLink } from "../components/NextLink"
+import { SearchField } from "../components/SearchField"
 
-const AuthorsListQuery = gql`
-  query AuthorsQuery($firstName: String = "", $lastName: String = "") {
+const LIST_AUTHORS_QUERY = gql`
+  query AuthorsQuery($firstName: String, $lastName: String) {
     authors(firstName: $firstName, lastName: $lastName) {
       authorid
       authorfirst
@@ -20,7 +19,7 @@ const AuthorsListQuery = gql`
   }
 `
 
-const AuthorQuery = gql`
+const AUTHOR_QUERY = gql`
   query AuthorQuery($id: Int!) {
     author(id: $id) {
       authorid
@@ -33,26 +32,10 @@ const AuthorQuery = gql`
 `
 
 export const Authors = props => {
-  const listInputRef = useRef<HTMLInputElement>(null)
-  const authorInputRef = useRef<HTMLInputElement>(null)
-  const [getAuthors, { data: authorsListData }] = useLazyQuery(AuthorsListQuery)
-  const [getAuthorById, { data: authorData }] = useLazyQuery(AuthorQuery)
-
-  function searchList() {
-    getAuthors({
-      variables: {
-        firstName: listInputRef?.current?.value,
-      },
-    })
-  }
-
-  function searchById() {
-    getAuthorById({
-      variables: {
-        id: Number(authorInputRef?.current?.value),
-      },
-    })
-  }
+  const [getAuthors, { data: authorsListData }] = useLazyQuery(
+    LIST_AUTHORS_QUERY
+  )
+  const [getAuthorById, { data: authorData }] = useLazyQuery(AUTHOR_QUERY)
 
   return (
     <Box>
@@ -69,18 +52,17 @@ export const Authors = props => {
 
       <Flex mt={3} flexDirection="column">
         <Box>
-          <Flex>
-            <Input
-              ref={listInputRef}
-              placeholder="Last Name"
-              onKeyDown={event => {
-                if (event.keyCode === 13) {
-                  searchList()
-                }
-              }}
-            />
-            <Button onClick={() => searchList()}>Search Authors</Button>
-          </Flex>
+          <SearchField
+            buttonText="Search Authors"
+            inputPlaceholder="Last Name"
+            onSearch={value => {
+              getAuthors({
+                variables: {
+                  firstName: value,
+                },
+              })
+            }}
+          />
 
           {authorsListData && (
             <Box>
@@ -89,19 +71,17 @@ export const Authors = props => {
           )}
         </Box>
         <Box>
-          <Flex>
-            <Input
-              ref={authorInputRef}
-              placeholder="AuthorID"
-              onKeyDown={event => {
-                if (event.keyCode === 13) {
-                  searchById()
-                }
-              }}
-            />
-            <Button onClick={() => searchById()}>Search by AuthorID</Button>
-          </Flex>
-
+          <SearchField
+            buttonText="Search by AuthorID"
+            inputPlaceholder="AuthorID"
+            onSearch={value => {
+              getAuthorById({
+                variables: {
+                  id: Number(value),
+                },
+              })
+            }}
+          />
           {authorData && (
             <Box>
               <Text

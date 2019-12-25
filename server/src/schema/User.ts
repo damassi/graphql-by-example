@@ -13,7 +13,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String): User
+    createUser(username: String): User
   }
 `
 
@@ -39,7 +39,7 @@ export const resolvers = {
   },
 
   Mutation: {
-    addUser: async (_parent, args) => {
+    createUser: async (_parent, args) => {
       const user = await api.app.post(`/users`, {
         data: {
           username: args.username,
