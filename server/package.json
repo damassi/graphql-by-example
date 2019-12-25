@@ -38,6 +38,8 @@
     "apollo": "2.8.3",
     "fork-ts-checker-webpack-plugin": "^4.0.0-beta.4",
     "get-graphql-schema": "^2.1.2",
+    "open-browser-plugin": "^1.1.1",
+    "open-browser-webpack-plugin": "^0.0.5",
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
   }

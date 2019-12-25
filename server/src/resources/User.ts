@@ -27,14 +27,25 @@ export function makeUser(sequelize) {
  */
 export const router = express()
 
-router.get("/users", async (_req, res, next) => {
-  try {
-    const users = await User.findAll()
-    res.json(users)
-  } catch (error) {
-    next(error)
-  }
-})
+router
+  .get("/users", async (_req, res, next) => {
+    try {
+      const users = await User.findAll()
+      res.json(users)
+    } catch (error) {
+      next(error)
+    }
+  })
+  .post("/users", async (req, res, next) => {
+    try {
+      const user = await User.create({
+        username: req.body.data.username,
+      })
+      res.json(user)
+    } catch (error) {
+      next(error)
+    }
+  })
 
 router.get("/users/:id", async (req, res, next) => {
   try {

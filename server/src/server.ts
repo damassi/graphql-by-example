@@ -8,6 +8,7 @@ const { PORT } = process.env
 const app = express()
 
 // Mount middleware
+app.use(express.json())
 app.use(cors())
 
 // Mount RESTful routes
