@@ -1,4 +1,5 @@
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const OpenBrowserPlugin = require("open-browser-webpack-plugin")
 
 module.exports = {
   webpack: (config, _options, _webpack) => {
@@ -16,6 +17,10 @@ module.exports = {
         tslint: false,
         checkSyntacticErrors: true,
         watch: ["./src"],
+      }),
+      new OpenBrowserPlugin({
+        url: `http://localhost:4000/graphql`,
+        delay: 3000,
       })
     )
 

@@ -21,10 +21,10 @@ export const ButtonBase = styled.button.attrs({
   }
 `
 
-export const Button = props => {
+export const Button = ({ children, ...props }) => {
   return (
-    <ButtonBase>
-      <a href="#">{props.children}</a>
+    <ButtonBase {...props}>
+      <a href="#">{children}</a>
     </ButtonBase>
   )
 }

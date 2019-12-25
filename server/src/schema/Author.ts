@@ -6,7 +6,7 @@ export const typeDefs = gql`
     authorfirst: String
     authorlast: String
     authorid: Int
-    description: String
+    spotlight: String
     fullName: String
   }
 

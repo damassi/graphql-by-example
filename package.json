@@ -6,7 +6,7 @@
   "author": "Christopher Pappas <damassi.pappas@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently 'cd server && yarn dev' 'cd client && yarn start'"
+    "start": "concurrently --raw --kill-others 'cd server && yarn dev' 'cd client && yarn start'"
   },
   "devDependencies": {
     "concurrently": "^5.0.2"

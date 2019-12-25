@@ -5840,6 +5840,25 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+open-browser-plugin@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/open-browser-plugin/-/open-browser-plugin-1.1.1.tgz#67ccf7828ce56a040d77cacbcc1a40ba5428a2ad"
+  integrity sha512-2iS+bpuJZ9nn1CKtuImwxNLYcf9ICtBEjWUyA/hs0RI/R1nJWkyxRcY6iSgOZDsSRSsGiJ6LH/D5YOxQMVdbrw==
+  dependencies:
+    open "0.0.5"
+
+open-browser-webpack-plugin@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/open-browser-webpack-plugin/-/open-browser-webpack-plugin-0.0.5.tgz#5e6dc6f8b8797331e212985de218572d84c0521f"
+  integrity sha1-Xm3G+Lh5czHiEphd4hhXLYTAUh8=
+  dependencies:
+    open "0.0.5"
+
+open@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
+  integrity sha1-QsPhjslUZra/DcQvOilFw/DK2Pw=
+
 opn@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/opn/-/opn-3.0.3.tgz#b6d99e7399f78d65c3baaffef1fb288e9b85243a"
