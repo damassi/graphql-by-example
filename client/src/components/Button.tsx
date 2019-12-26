@@ -17,7 +17,7 @@ export const ButtonBase = styled.button.attrs({
   font-size: 14px;
 
   &:active {
-    color: purple;
+    color: #ff0000;
   }
 `
 

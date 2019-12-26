@@ -9,14 +9,13 @@ import { Header } from "./components/Header"
 import { Home } from "./routes/Home"
 import { Users } from "./routes/Users"
 import { Works } from "./routes/Works"
-import { Spacer } from "./components/Spacer"
 
 export const App: React.FC = () => {
   return (
     <Box m={2} width="50%" margin="auto">
       <Header />
 
-      <Box>
+      <Box my={4}>
         <Router>
           <Home path="/" />
           <Authors path="authors" />
@@ -25,8 +24,6 @@ export const App: React.FC = () => {
           <FurtherReading path="further-reading" />
         </Router>
       </Box>
-
-      <Spacer my={3} />
 
       <Footer />
     </Box>

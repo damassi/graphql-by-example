@@ -38,7 +38,7 @@ export const Users = props => {
         well as how we can change data via GraphQL mutations.
       </Text>
 
-      <Flex mt={3} flexDirection="row">
+      <Flex mt={3}>
         <Box>
           <SearchField
             buttonText="Create new User"

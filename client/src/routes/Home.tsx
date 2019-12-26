@@ -3,7 +3,6 @@ import { Box, Text } from "rebass"
 import { NextLink } from "../components/NextLink"
 
 export const Home = props => {
-  const foo: string = 3
   return (
     <Box>
       <Text fontSize={3}>
