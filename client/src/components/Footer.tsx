@@ -5,7 +5,15 @@ export const Footer = props => {
   return (
     <Box>
       <Text fontSize={1}>
-        Check out the <a href="#">source on GitHub</a>.
+        Check out the{" "}
+        <a
+          href="https://github.com/damassi/graphql-presentation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          source on GitHub
+        </a>
+        .
       </Text>
     </Box>
   )

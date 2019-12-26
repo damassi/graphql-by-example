@@ -4,7 +4,7 @@ import { Button } from "../components/Button"
 
 export const NextLink = ({ to, children }) => {
   return (
-    <Button as="a">
+    <Button>
       <Link to={to} style={{ textDecoration: "none" }}>
         {children}
       </Link>

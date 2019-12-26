@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import JSON from "react-json-view"
 import { Box, Text, Flex } from "rebass"
 import { NextLink } from "../components/NextLink"
@@ -72,7 +72,7 @@ export const Users = props => {
         </Box>
       </Flex>
 
-      <Flex my={3}>
+      <Flex>
         <NextLink to="/further-reading">
           <strong>Next: </strong> Links to further reading
         </NextLink>

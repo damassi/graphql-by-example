@@ -15,8 +15,22 @@ export const FurtherReading = props => {
 
       <Text fontSize={2}>
         To learn more, check out the source-code for the{" "}
-        <a href="#">server-side</a> as well as <a href="#">client</a>, and see
-        the documentation links below:
+        <a
+          href="https://github.com/damassi/graphql-presentation/tree/master/server"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          server-side
+        </a>{" "}
+        as well as{" "}
+        <a
+          href="https://github.com/damassi/graphql-presentation/tree/master/client"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          client
+        </a>
+        , and see the documentation links below:
       </Text>
 
       <Spacer my={4} />

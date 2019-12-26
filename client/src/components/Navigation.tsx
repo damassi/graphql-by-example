@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Flex } from "rebass"
-import { Link, LinkProps } from "@reach/router"
+import { Link } from "@reach/router"
 
 const NavItem: React.FC<{ to: string }> = ({ children, ...props }) => {
   return (

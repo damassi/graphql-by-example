@@ -54,7 +54,7 @@ export const Authors = props => {
         <Box>
           <SearchField
             buttonText="Search Authors"
-            inputPlaceholder="Last Name"
+            inputPlaceholder="First Name"
             onSearch={value => {
               getAuthors({
                 variables: {
@@ -98,11 +98,9 @@ export const Authors = props => {
         </Box>
       </Flex>
 
-      <Flex my={3}>
-        <NextLink to="/users">
-          <strong>Next: </strong>Creating a schema from an internal API
-        </NextLink>
-      </Flex>
+      <NextLink to="/users">
+        <strong>Next: </strong>Creating a schema from an internal API
+      </NextLink>
     </Box>
   )
 }
