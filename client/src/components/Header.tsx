@@ -5,7 +5,7 @@ import { Link } from "@reach/router"
 
 export const Header: React.FC = () => {
   return (
-    <Box py={3}>
+    <Box mt={4}>
       <Flex justifyContent="space-between">
         <Link to="/">
           <GraphQLLogo style={{ height: 100 }} />

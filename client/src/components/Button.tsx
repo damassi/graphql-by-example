@@ -16,15 +16,11 @@ export const ButtonBase = styled.button.attrs({
   font-family: sans-serif;
   font-size: 14px;
 
-  a {
-    text-decoration: none;
+  &:active {
+    color: #e10098;
   }
 `
 
 export const Button = ({ children, ...props }) => {
-  return (
-    <ButtonBase {...props}>
-      <a href="#">{children}</a>
-    </ButtonBase>
-  )
+  return <ButtonBase {...props}>{children}</ButtonBase>
 }
