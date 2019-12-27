@@ -12,5 +12,6 @@
   "[json]": {
     "editor.formatOnSave": false
   },
+  "eslint.workingDirectories": ["./client", "./server"],
   "typescript.tsdk": "./node_modules/typescript/lib"
 }

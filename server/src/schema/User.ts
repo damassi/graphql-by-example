@@ -22,6 +22,7 @@ export const resolvers = {
     users: async () => {
       try {
         const users = await api.app.get("/users")
+        users.data.reverse()
         return users.data
       } catch (error) {
         throw new Error(error)

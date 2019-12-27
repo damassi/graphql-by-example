@@ -10,19 +10,21 @@ module.exports = {
     /**
      * Add type-checking into Webpack pipeline
      */
-    config.plugins.push(
-      new ForkTsCheckerWebpackPlugin({
-        formatter: "codeframe",
-        formatterOptions: "highlightCode",
-        tslint: false,
-        checkSyntacticErrors: true,
-        watch: ["./src"],
-      }),
-      new OpenBrowserPlugin({
-        url: `http://localhost:4000/graphql`,
-        delay: 3000,
-      })
-    )
+    if (process.env.NODE_ENV === "development") {
+      config.plugins.push(
+        new ForkTsCheckerWebpackPlugin({
+          formatter: "codeframe",
+          formatterOptions: "highlightCode",
+          tslint: false,
+          checkSyntacticErrors: true,
+          watch: ["./src"],
+        }),
+        new OpenBrowserPlugin({
+          url: `http://localhost:4000/graphql`,
+          delay: 3000,
+        })
+      )
+    }
 
     /**
      * Enable TypeScript support via babel

@@ -1,12 +1,26 @@
 import React from "react"
-import { Box, Text } from "rebass"
+import { Flex, Text, Box } from "rebass"
+import { Link } from "@reach/router"
 
 export const Footer = props => {
   return (
-    <Box>
+    <Flex mb={4}>
       <Text fontSize={1}>
-        Check out the <a href="#">source on GitHub</a>.
+        Check out the{" "}
+        <a
+          href="https://github.com/damassi/graphql-presentation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          source on GitHub
+        </a>
       </Text>
-    </Box>
+
+      <Box mx={2}>|</Box>
+
+      <Text fontSize={1}>
+        <Link to="/further-reading">Further Reading</Link>
+      </Text>
+    </Flex>
   )
 }

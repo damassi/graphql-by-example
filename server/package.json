@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "backpack build",
     "dev": "backpack",
+    "start:prod": "NODE_ENV=production node ./build/main.js",
     "sync-schema": "get-graphql-schema http://localhost:3000/graphql > data/schema.graphql",
     "type-check": "tsc --noEmit"
   },
@@ -29,6 +31,7 @@
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "lodash.merge": "^4.6.2",
+    "pg": "^7.16.0",
     "sequelize": "^5.21.3",
     "sqlite3": "^4.1.1",
     "uuid": "^3.3.3"
