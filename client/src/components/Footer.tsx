@@ -8,7 +8,7 @@ export const Footer = props => {
       <Text fontSize={1}>
         Check out the{" "}
         <a
-          href="https://github.com/damassi/graphql-presentation"
+          href="https://github.com/damassi/graphql-by-example"
           target="_blank"
           rel="noopener noreferrer"
         >

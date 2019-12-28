@@ -16,7 +16,7 @@ export const FurtherReading = props => {
       <Text fontSize={2}>
         To learn more, check out the source-code for the{" "}
         <a
-          href="https://github.com/damassi/graphql-presentation/tree/master/server"
+          href="https://github.com/damassi/graphql-by-example/tree/master/server"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -24,7 +24,7 @@ export const FurtherReading = props => {
         </a>{" "}
         as well as{" "}
         <a
-          href="https://github.com/damassi/graphql-presentation/tree/master/client"
+          href="https://github.com/damassi/graphql-by-example/tree/master/client"
           target="_blank"
           rel="noopener noreferrer"
         >

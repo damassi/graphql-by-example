@@ -1,6 +1,7 @@
 .DS_Store
 build
 node_modules
+yarn-error.log
 
 # Elastic Beanstalk CLI Files
 server/.elasticbeanstalk/*

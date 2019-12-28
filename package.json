@@ -1,13 +1,12 @@
 {
-  "name": "graphql-presentation",
+  "name": "graphql-by-example",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:damassi/graphql-presentation.git",
+  "repository": "git@github.com:damassi/graphql-by-example.git",
   "author": "Christopher Pappas <damassi.pappas@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "concurrently": "concurrently --raw --kill-others",
-    "start": "yarn concurrently 'cd server && yarn dev' 'cd client && yarn start'"
+    "setup": "yarn install && cd server && yarn install && cd ../client && yarn install",
+    "start": "concurrently --raw --kill-others 'cd server && yarn start' 'cd client && yarn start'"
   },
   "devDependencies": {
     "concurrently": "^5.0.2"

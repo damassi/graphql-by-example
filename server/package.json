@@ -1,12 +1,11 @@
 {
-  "name": "graphql-presentation",
+  "name": "graphql-by-example-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "backpack build",
-    "dev": "backpack",
-    "start:prod": "NODE_ENV=production node ./build/main.js",
+    "start": "backpack",
     "sync-schema": "get-graphql-schema http://localhost:3000/graphql > data/schema.graphql",
     "type-check": "tsc --noEmit"
   },
