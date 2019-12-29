@@ -18,14 +18,14 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
+    user: (_parent, args, { dataSources }) => {
+      return dataSources.appAPI.get(`/users/${args.id}`)
+    },
+
     users: async (_parent, _args, { dataSources }) => {
       const users = await dataSources.appAPI.get("/users")
       users.reverse()
       return users
-    },
-
-    user: (_parent, args, { dataSources }) => {
-      return dataSources.appAPI.get(`/users/${args.id}`)
     },
   },
 

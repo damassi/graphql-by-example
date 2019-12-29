@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize"
-import { User, makeUser } from "./resources/User"
+import { User, makeUser } from "./models/User"
 
 const SQL_MODE = "sqlite::memory:"
 
