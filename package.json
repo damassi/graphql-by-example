@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "setup": "yarn install && cd server && yarn install && cd ../client && yarn install",
-    "start": "concurrently --raw --kill-others 'cd server && yarn start' 'cd client && yarn start'"
+    "start": "concurrently --kill-others 'cd server && yarn start' 'cd client && yarn start'"
   },
   "devDependencies": {
     "concurrently": "^5.0.2"

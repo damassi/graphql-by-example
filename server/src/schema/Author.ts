@@ -1,5 +1,4 @@
 import gql from "graphql-tag"
-import { api } from "../api"
 
 export const typeDefs = gql`
   type Author {
@@ -8,6 +7,7 @@ export const typeDefs = gql`
     authorid: Int
     spotlight: String
     fullName: String
+    titles: [Title]
   }
 
   extend type Query {
@@ -18,16 +18,11 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    author: async (_parent, args, _context, _info) => {
-      try {
-        const response = await api.book.get(`/authors/${args.id}`)
-        return response.data
-      } catch (error) {
-        throw new Error(error)
-      }
+    author: async (_parent, args, { dataSources }) => {
+      return dataSources.bookAPI.get(`/authors/${args.id}`)
     },
 
-    authors: async (_parent, args) => {
+    authors: async (_parent, args, { dataSources }) => {
       if (!(args.firstName || args.lastName)) {
         throw new Error(
           "When querying all authors a `firstName` or a `lastName` argument is " +
@@ -35,18 +30,12 @@ export const resolvers = {
         )
       }
 
-      try {
-        const response = await api.book.get(`/authors`, {
-          params: {
-            firstName: args.firstName,
-            lastName: args.lastName,
-          },
-        })
+      const response = await dataSources.bookAPI.get(`/authors`, {
+        firstName: args.firstName,
+        lastName: args.lastName,
+      })
 
-        return response.data.author
-      } catch (error) {
-        throw new Error(error)
-      }
+      return response.author
     },
   },
 
@@ -58,6 +47,10 @@ export const resolvers = {
   Author: {
     fullName: author => {
       return author.authorfirst + " " + author.authorlast
+    },
+
+    titles: async (author, _args, { dataSources }) => {
+      return await dataSources.bookAPI.getTitles(author.authorid)
     },
   },
 }

@@ -1,5 +1,4 @@
 import gql from "graphql-tag"
-import { api } from "../api"
 
 export const typeDefs = gql`
   type User {
@@ -19,34 +18,22 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    users: async () => {
-      try {
-        const users = await api.app.get("/users")
-        users.data.reverse()
-        return users.data
-      } catch (error) {
-        throw new Error(error)
-      }
+    users: async (_parent, _args, { dataSources }) => {
+      const users = await dataSources.appAPI.get("/users")
+      users.reverse()
+      return users
     },
 
-    user: async (_parent, args) => {
-      try {
-        const user = await api.app.get(`/users/${args.id}`)
-        return user.data
-      } catch (error) {
-        throw new Error(error)
-      }
+    user: (_parent, args, { dataSources }) => {
+      return dataSources.appAPI.get(`/users/${args.id}`)
     },
   },
 
   Mutation: {
-    createUser: async (_parent, args) => {
-      const user = await api.app.post(`/users`, {
-        data: {
-          username: args.username,
-        },
+    createUser: (_parent, args, { dataSources }) => {
+      return dataSources.appAPI.post(`/users`, {
+        username: args.username,
       })
-      return user.data
     },
   },
 }
