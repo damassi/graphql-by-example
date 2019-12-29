@@ -39,7 +39,7 @@ router
   .post("/users", async (req, res, next) => {
     try {
       const user = await User.create({
-        username: req.body.data.username,
+        username: req.body.username,
       })
       res.json(user)
     } catch (error) {
