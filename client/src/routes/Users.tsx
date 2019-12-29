@@ -1,13 +1,14 @@
 import React from "react"
 import JSON from "react-json-view"
+import { gql } from "apollo-boost"
+import { useMutation, useLazyQuery } from "@apollo/react-hooks"
 import { Box, Text, Flex } from "rebass"
+
 import { NextLink } from "../components/NextLink"
 import { Button } from "../components/Button"
 import { SearchField } from "../components/SearchField"
-import { gql } from "apollo-boost"
-import { useMutation, useLazyQuery } from "@apollo/react-hooks"
 
-const CREATE_USER_MUTATION = gql`
+const CreateUserMutation = gql`
   mutation CreateUser($username: String!) {
     createUser(username: $username) {
       id
@@ -16,7 +17,7 @@ const CREATE_USER_MUTATION = gql`
   }
 `
 
-const LIST_USERS_QUERY = gql`
+const ListUsersQuery = gql`
   query ListUsers {
     users {
       id
@@ -26,8 +27,8 @@ const LIST_USERS_QUERY = gql`
 `
 
 export const Users = props => {
-  const [createUser, { data: newUserData }] = useMutation(CREATE_USER_MUTATION)
-  const [listUsers, { data: listUsersData }] = useLazyQuery(LIST_USERS_QUERY, {
+  const [createUser, { data: newUserData }] = useMutation(CreateUserMutation)
+  const [listUsers, { data: listUsersData }] = useLazyQuery(ListUsersQuery, {
     fetchPolicy: "cache-and-network",
   })
 

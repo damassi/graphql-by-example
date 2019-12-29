@@ -8,7 +8,6 @@ import { FurtherReading } from "./routes/FurtherReading"
 import { Header } from "./components/Header"
 import { Home } from "./routes/Home"
 import { Users } from "./routes/Users"
-import { Works } from "./routes/Works"
 
 export const App: React.FC = () => {
   return (
@@ -19,7 +18,6 @@ export const App: React.FC = () => {
         <Router primary={false}>
           <Home path="/" />
           <Authors path="authors" />
-          <Works path="works" />
           <Users path="users" />
           <FurtherReading path="further-reading" />
         </Router>

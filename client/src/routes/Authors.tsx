@@ -7,35 +7,43 @@ import { gql } from "apollo-boost"
 import { NextLink } from "../components/NextLink"
 import { SearchField } from "../components/SearchField"
 
-const LIST_AUTHORS_QUERY = gql`
-  query AuthorsQuery($firstName: String, $lastName: String) {
-    authors(firstName: $firstName, lastName: $lastName) {
-      authorid
-      authorfirst
-      authorlast
-      spotlight
-      fullName
+const AuthorInfoFragment = gql`
+  fragment AuthorInfo on Author {
+    authorid
+    authorfirst
+    authorlast
+    spotlight
+    fullName
+
+    titles {
+      author
+      isbn
+      titleweb
     }
   }
 `
 
-const AUTHOR_QUERY = gql`
-  query AuthorQuery($id: Int!) {
-    author(id: $id) {
-      authorid
-      authorfirst
-      authorlast
-      spotlight
-      fullName
+const AuthorsQuery = gql`
+  query AuthorsQuery($firstName: String, $lastName: String) {
+    authors(firstName: $firstName, lastName: $lastName) {
+      ...AuthorInfo
     }
   }
+  ${AuthorInfoFragment}
+`
+
+const AuthorQuery = gql`
+  query AuthorQuery($id: Int!) {
+    author(id: $id) {
+      ...AuthorInfo
+    }
+  }
+  ${AuthorInfoFragment}
 `
 
 export const Authors = props => {
-  const [getAuthors, { data: authorsListData }] = useLazyQuery(
-    LIST_AUTHORS_QUERY
-  )
-  const [getAuthorById, { data: authorData }] = useLazyQuery(AUTHOR_QUERY)
+  const [getAuthors, { data: authorsListData }] = useLazyQuery(AuthorsQuery)
+  const [getAuthorById, { data: authorData }] = useLazyQuery(AuthorQuery)
 
   return (
     <Box>
