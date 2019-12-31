@@ -1,8 +1,9 @@
 import express from "express"
 import { ApolloServer } from "apollo-server-express"
 import { typeDefs, resolvers } from "./schema"
-import { router as userRoutes } from "./resources/User"
-import { AppAPI, BookAPI } from "./api"
+import { router as userRoutes } from "./models/User"
+import { AppAPI } from "./datasources/AppAPI"
+import { BookAPI } from "./datasources/BookAPI"
 
 const { PORT } = process.env
 const app = express()
@@ -25,7 +26,12 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
 
-  // See: https://www.apollographql.com/docs/apollo-server/data/data-sources/#rest-data-source
+  /**
+   * DataSources are used to communicate with REST endpoints and handle things
+   * like N+1 waterfalls, caching, etc
+   *
+   * See: https://www.apollographql.com/docs/apollo-server/data/data-sources/#rest-data-source
+   */
   dataSources: () => {
     return {
       appAPI: new AppAPI(),
