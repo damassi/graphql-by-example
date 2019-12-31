@@ -1,8 +1,5 @@
 import { RESTDataSource } from "apollo-datasource-rest"
 
-/**
- * Create fetch instance for communicating with public RandomHouse books REST API
- */
 export class BookAPI extends RESTDataSource {
   baseURL = "https://reststop.randomhouse.com/resources/"
 
