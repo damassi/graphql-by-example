@@ -5,21 +5,37 @@ import * as author from "./Author"
 import * as user from "./User"
 import * as title from "./Title"
 
-// An initial `Query` type is required, which will be extend by subtypes. If
-// there's a type that doesn't logically fit inside of its own file, it can be
-// added here.
-const Query = gql`
+import { version } from "../../package.json"
+
+/**
+ * An initial `Query` type is required, which will be extend by subtypes. If
+ * there's a type that doesn't logically fit inside of its own file, it can be
+ * added here.
+ */
+const RootQuery = gql`
   type Query {
     """
-    Noop to support extending Query type
+    Application version
     """
-    _: String
+    version: String
   }
 `
 
-export const typeDefs = [Query, author.typeDefs, user.typeDefs, title.typeDefs]
+const rootResolvers = {
+  Query: {
+    version: () => version,
+  },
+}
+
+export const typeDefs = [
+  RootQuery,
+  author.typeDefs,
+  user.typeDefs,
+  title.typeDefs,
+]
 
 export const resolvers = merge(
+  rootResolvers,
   author.resolvers,
   user.resolvers,
   title.resolvers
