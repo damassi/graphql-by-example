@@ -51,7 +51,11 @@ export const Authors = props => {
         <Text fontSize={3}>
           This route demonstrates how we can use GraphQL to quickly scaffold
           remote REST APIs, such as{" "}
-          <a href="http://www.penguinrandomhouse.biz/webservices/rest/">
+          <a
+            href="http://www.penguinrandomhouse.biz/webservices/rest/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Penguin Books
           </a>
           .

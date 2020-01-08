@@ -1,4 +1,5 @@
 import gql from "graphql-tag"
+import uniqBy from "lodash.uniqby"
 
 export const typeDefs = gql`
   type Author {
@@ -35,7 +36,8 @@ export const resolvers = {
         lastName: args.lastName,
       })
 
-      return response.author
+      const dedupedAuthors = uniqBy(response.author, "authorlast")
+      return dedupedAuthors
     },
   },
 

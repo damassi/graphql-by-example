@@ -5,30 +5,30 @@ import * as author from "./Author"
 import * as user from "./User"
 import * as title from "./Title"
 
-import { version } from "../../package.json"
+import { version as appVersion } from "../../package.json"
 
 /**
  * An initial `Query` type is required, which will be extend by subtypes. If
  * there's a type that doesn't logically fit inside of its own file, it can be
  * added here.
  */
-const RootQuery = gql`
+const rootTypeDefs = gql`
   type Query {
     """
     Application version
     """
-    version: String
+    appVersion: String
   }
 `
 
 const rootResolvers = {
   Query: {
-    version: () => version,
+    appVersion: () => appVersion,
   },
 }
 
 export const typeDefs = [
-  RootQuery,
+  rootTypeDefs,
   author.typeDefs,
   user.typeDefs,
   title.typeDefs,
