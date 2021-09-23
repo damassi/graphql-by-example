@@ -1,6 +1,6 @@
 # GraphQL by Example
 
-This repo showcases how to build a full-stack server/client GraphQL app via Apollo, React, and TypeScript.
+This repo showcases how to build a full-stack server/client GraphQL app via Apollo, React, and TypeScript, and accompanies a [presentation that can be viewed here](https://github.com/damassi/presentations/raw/master/graphql-presentation.pdf). 
 
 Examples include building a GraphQL schema around a local REST server pointed at a database, as well as integrating external service endpoints in an API-gateway-like fashion.
 
